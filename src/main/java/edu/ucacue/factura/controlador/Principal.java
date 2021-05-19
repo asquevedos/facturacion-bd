@@ -21,6 +21,7 @@ public class Principal {
 	public void insertarPersona()
 	{
 		Persona p1= new Persona(2, "Sebastian", "Quevedo", "3423423", "534534534");
+		System.out.print("hola");
 		personaRepository.save(p1);
 	}
 
