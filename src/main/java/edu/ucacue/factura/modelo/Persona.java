@@ -20,7 +20,9 @@ public class Persona {
 	
 	@Column(length = 30)
 	private String apellido;
+	
 	private String telefono;
+	
 	@Column(nullable = false,unique = true)
 	private String cedula;
 		
@@ -68,6 +70,12 @@ public class Persona {
 	}
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
+				+ ", cedula=" + cedula + "]";
 	}
 	
 	

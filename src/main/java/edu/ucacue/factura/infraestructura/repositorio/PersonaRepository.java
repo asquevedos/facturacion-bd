@@ -6,4 +6,5 @@ import edu.ucacue.factura.modelo.Persona;
 
 public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
+	Persona findByCedula(String cedula);
 }
