@@ -22,7 +22,7 @@ public class FacturaApplication {
 	    .run(args);
 		
 		Principal p = contexto.getBean(Principal.class);
-		p.insertarPersona();
+		p.GUI();
 	}
 
 }
