@@ -56,6 +56,7 @@ public class Principal {
 				try {
 				System.out.println("Ingrese el número de cédula que desea eliminar: ");
 				String cedulaBuscar= entradaEscaner.next();
+				
 				Persona personaRecuperada= personaRepository.findByCedula(cedulaBuscar);
 				personaRepository.delete(personaRecuperada);
 				//1 Pedir al usuario que persona quiero modificar "Pedir la cédula"
@@ -66,7 +67,7 @@ public class Principal {
 			case 4:
 					//Buscar todas las personas que están en la BD e imprimir os resultados
 				
-				List<Persona> personas= personaRepository.findAll();
+				List<Persona> personas= personaRepository.buscarPorNombres("Gabriela");
 				System.out.println("Cédula|"+ "\t"+ "|Nombre|"+"\t" + "|Apellido|");
 				for (Persona persona : personas) {
 					System.out.println(persona.getCedula()+" "+ persona.getNombre()+" " + persona.getApellido());
