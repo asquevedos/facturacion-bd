@@ -8,8 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import edu.ucacue.factura.controlador.Index;
 import edu.ucacue.factura.controlador.Principal;
-import edu.ucacue.factura.controlador.PrincipalUI;
+import edu.ucacue.factura.controlador.PersonaUI;
 
 @SpringBootApplication
 public class FacturaApplication {
@@ -30,8 +31,8 @@ public class FacturaApplication {
 			    .web(WebApplicationType.NONE)
 			    .run(args);
 
-				PrincipalUI principalUI= contexto.getBean(PrincipalUI.class);
-				principalUI.setVisible(true);
+				Index index= contexto.getBean(Index.class);
+				index.setVisible(true);
 	}
 
 }
