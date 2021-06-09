@@ -52,8 +52,11 @@ public class PersonaUI extends JInternalFrame {
 
 	@Autowired
 	PersonaRepository personaRepositorio;
+	
 	private JTable tablePersona;
 	private JLabel lblNewLabel_2;
+	private JTextField txtBuscarApellido;
+	private JLabel lblNewLabel_4;
 
 	public PersonaUI() {
 
@@ -97,7 +100,7 @@ public class PersonaUI extends JInternalFrame {
 		txtCedula.setColumns(10);
 
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(235, 155, 121, 35);
+		btnGuardar.setBounds(407, 65, 121, 35);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Persona p;
@@ -114,7 +117,7 @@ public class PersonaUI extends JInternalFrame {
 				}
 				personaRepositorio.save(p);
 				limpiarInterfaz();
-				generarTabla();
+				generarTabla(personaRepositorio.findAll());
 			}
 		});
 		contentPane.add(btnGuardar);
@@ -139,7 +142,7 @@ public class PersonaUI extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				Persona pEliminar = personaModel.getPersonaAt(tablePersona.getSelectedRow());
 				personaRepositorio.delete(pEliminar);
-				generarTabla();
+				generarTabla(personaRepositorio.findAll());
 
 			}
 		});
@@ -169,6 +172,26 @@ public class PersonaUI extends JInternalFrame {
 		txtTelefono.setBounds(234, 124, 122, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
+		
+		txtBuscarApellido = new JTextField();
+		txtBuscarApellido.setBounds(130, 183, 259, 20);
+		contentPane.add(txtBuscarApellido);
+		txtBuscarApellido.setColumns(10);
+		
+		lblNewLabel_4 = new JLabel("Buscar por apellido");
+		lblNewLabel_4.setBounds(36, 189, 109, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JButton btnBuscar = new JButton("Buscar..");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String apellido= txtBuscarApellido.getText();
+				List<Persona> personasFiltro= personaRepositorio.buscarPorApellidoLike(apellido);
+				generarTabla(personasFiltro);
+			}
+		});
+		btnBuscar.setBounds(407, 182, 89, 23);
+		contentPane.add(btnBuscar);
 
 	}
 
@@ -179,9 +202,8 @@ public class PersonaUI extends JInternalFrame {
 		txtTelefono.setText("");
 	}
 
-	public void generarTabla() {
+	public void generarTabla(List<Persona> personas) {
 
-		List<Persona> personas = personaRepositorio.findAll();
 		
 		personaModel = new PersonaItemModel(personas);
 		

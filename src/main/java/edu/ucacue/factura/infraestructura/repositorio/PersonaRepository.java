@@ -28,7 +28,12 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 	@Query("select p from Persona p where p.apellido = :apellido and p.nombre = :nombre")
 	List<Persona> buscarPorApellidoYnombre(@Param("apellido") String apellido, @Param("nombre") String nombre);
 	
-	@Query("select p from Persona p where p.apellido like :nombre")
+	@Query("select p from Persona p where p.nombre like :nombre")
 	List<Persona> buscarPorNombreLike(@Param("nombre") String nombre);
+
+	@Query("select p from Persona p where p.apellido like %:apellido%")
+	List<Persona> buscarPorApellidoLike(@Param("apellido") String apellido);
+	
+	
 
 }
