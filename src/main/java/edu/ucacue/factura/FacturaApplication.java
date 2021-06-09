@@ -9,8 +9,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import edu.ucacue.factura.controlador.Index;
-import edu.ucacue.factura.controlador.Principal;
-import edu.ucacue.factura.controlador.PersonaUI;
 
 @SpringBootApplication
 public class FacturaApplication {
