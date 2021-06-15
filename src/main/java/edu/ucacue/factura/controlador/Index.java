@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import edu.ucacue.factura.controlador.factura.FacturaUI;
 import edu.ucacue.factura.controlador.persona.PersonaUI;
 
 import javax.swing.JMenuBar;
@@ -34,6 +35,8 @@ public class Index extends JFrame {
 	@Autowired
 	PersonaModificarUI pModificarUI;
 
+	@Autowired
+	FacturaUI facturaUI;
 	/**
 	 * Create the frame.
 	 */
@@ -75,11 +78,22 @@ public class Index extends JFrame {
 		
 		JMenuItem miPListar = new JMenuItem("Listar");
 		mnNewMenu.add(miPListar);
+		
+		JMenu mnNewMenu_1 = new JMenu("Factura");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Nueva Factura");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				facturaUI.setVisible(true);
+				desktopPanel.add(facturaUI);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem);
 		//contentPane = new JPanel();
 		//setContentPane(contentPane);
 		
 		
 		
 	}
-
 }
