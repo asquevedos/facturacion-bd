@@ -18,12 +18,12 @@ public class Producto {
 	@Column(length = 30)
 	private String nombre;
 	private String descripcion;
-	private String precio;
+	private double precio;
 	private String stock;
 	
 	
 	
-	public Producto(String nombre, String descripcion, String precio, String stock) {
+	public Producto(String nombre, String descripcion, double precio, String stock) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -56,12 +56,12 @@ public class Producto {
 	}
 
 
-	public String getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
 
-	public void setPrecio(String precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
