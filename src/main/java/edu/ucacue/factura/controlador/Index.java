@@ -13,12 +13,15 @@ import org.springframework.stereotype.Controller;
 
 import edu.ucacue.factura.controlador.factura.FacturaUI;
 import edu.ucacue.factura.controlador.persona.PersonaUI;
+import edu.ucacue.factura.infraestructura.servicios.PersonaReporteService;
+import net.sf.jasperreports.engine.JRException;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -37,6 +40,9 @@ public class Index extends JFrame {
 
 	@Autowired
 	FacturaUI facturaUI;
+	
+	@Autowired
+	PersonaReporteService personaReporteService;
 	/**
 	 * Create the frame.
 	 */
@@ -90,6 +96,20 @@ public class Index extends JFrame {
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Reporte");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					personaReporteService.generarReporte();
+				} catch (FileNotFoundException | JRException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_1);
 		//contentPane = new JPanel();
 		//setContentPane(contentPane);
 		
