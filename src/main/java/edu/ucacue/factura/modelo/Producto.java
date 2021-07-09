@@ -17,6 +17,7 @@ public class Producto {
 	
 	@Column(length = 30)
 	private String nombre;
+	
 	private String descripcion;
 	private double precio;
 	private String stock;
@@ -73,6 +74,16 @@ public class Producto {
 
 	public void setStock(String cantidad) {
 		this.stock = cantidad;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
