@@ -2,11 +2,12 @@ package edu.ucacue.factura.controlador;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.commons.collections.map.HashedMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class ProductoController implements Serializable {
 	public ResponseEntity<?> guardarProducto(@RequestBody Producto producto, BindingResult result )
 	{
 	
-		Map<String,Object> respuesta = new HashedMap();
+		Map<String,Object> respuesta = new HashMap<>();
 		
 		if(result.hasErrors())
 		{
