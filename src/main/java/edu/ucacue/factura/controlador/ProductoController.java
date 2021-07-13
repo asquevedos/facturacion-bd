@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.ucacue.factura.infraestructura.repositorio.ProductoRepository;
 import edu.ucacue.factura.modelo.Producto;
 
-@CrossOrigin
+@CrossOrigin //No olvidar de implementar en sus proyectos
 @RestController
 @RequestMapping("/api")
 public class ProductoController implements Serializable {
@@ -41,6 +42,15 @@ public class ProductoController implements Serializable {
 		productos = productoRepository.findAll();
 		return productos;
 	}
+	
+	@GetMapping("/productos/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Producto getProductosById(@PathVariable int id) {
+		
+		return productoRepository.findById(id).get();
+
+	}
+
 
 	@PostMapping("/producto")
 	public ResponseEntity<?> guardarProducto(@RequestBody Producto producto, BindingResult result )
