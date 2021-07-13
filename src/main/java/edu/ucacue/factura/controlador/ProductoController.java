@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.ucacue.factura.infraestructura.repositorio.ProductoRepository;
 import edu.ucacue.factura.modelo.Producto;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ProductoController implements Serializable {
